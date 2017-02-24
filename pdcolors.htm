@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+  <p>
+    Hex Value:
+    <input type="color" name="favcolor" id="picked">
+  </p>
+
+  <p>
+    RGB Value:
+  </p>
+  <p>
+    R:
+    <input type="text" id="R"><br>
+    G:
+    <input type="text" id="G"><br>
+    B:
+    <input type="text" id="B">
+  </p>
+  <p>
+    <input id="submit" type="button" value="Convert">
+  </p>
+
+<script type="application/javascript">
+  $(document).ready(function(){
+    function cutHex(h) { return (h.charAt(0)=="#") ? h.substring(1,7) : h}
+    function hexToR(h) {return parseInt((cutHex(h)).substring(0,2),16)}
+    function hexToG(h) {return parseInt((cutHex(h)).substring(2,4),16)}
+    function hexToB(h) {return parseInt((cutHex(h)).substring(4,6),16)}
+    $("#submit").on("click", function(event){
+      var R=($('#picked').val());
+      var G=($('#picked').val());
+      var B=($('#picked').val());
+      R=hexToR(R);
+      G=hexToG(G);
+      B=hexToB(B);
+
+      $('#R').val(R/255);
+      $('#G').val(G/255);
+      $('#B').val(B/255);
+    });
+  });
+</script>
+
+</body>
+</html>
