@@ -2,35 +2,42 @@
 <html>
 <head>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <p>
-    Hex Value:
-    <input type="color" name="favcolor" id="picked">
-  </p>
 
-  <p>
-    RGB Value:
-  </p>
-  <p>
-    R:
-    <input type="text" id="R"><br>
-    G:
-    <input type="text" id="G"><br>
-    B:
-    <input type="text" id="B">
-  </p>
-  <p>
-    <input id="submit" type="button" value="Convert">
-  </p>
+  <form>
+    <h1>Hex to PureData RGB Color Value</h1>
+    <div id="value--hex" class="value--hex">
+      <label for="favcolor">Hex Value:</label>
+      <input type="color" name="favcolor" id="picked">
+    </div>
+    <div id="value--rgb" class="value--rgb">
+      <p>RGB Value:</p>
+      <span class="nowrap">
+        <label for="R">R:</label>
+        <input type="text" id="R" name="R" disabled="true">
+      </span>
+      <span class="nowrap">
+        <label for="G">G:</label>
+        <input type="text" id="G" name="G" disabled="true">
+      </span>
+      <span class="nowrap">
+        <label for="B">B:</label>
+        <input type="text" id="B" name="B" disabled="true">
+      </span>
+    </div>
+    
+  </form>
 
 <script type="application/javascript">
   $(document).ready(function(){
-    function cutHex(h) { return (h.charAt(0)=="#") ? h.substring(1,7) : h}
-    function hexToR(h) {return parseInt((cutHex(h)).substring(0,2),16)}
-    function hexToG(h) {return parseInt((cutHex(h)).substring(2,4),16)}
-    function hexToB(h) {return parseInt((cutHex(h)).substring(4,6),16)}
-    $("#submit").on("click", function(event){
+    function cutHex(h) { return (h.charAt(0)=="#") ? h.substring(1,7) : h }
+    function hexToR(h) { return parseInt((cutHex(h)).substring(0,2),16) }
+    function hexToG(h) { return parseInt((cutHex(h)).substring(2,4),16) }
+    function hexToB(h) { return parseInt((cutHex(h)).substring(4,6),16) }
+
+    $("#picked").on("change", function(event){
       var R=($('#picked').val());
       var G=($('#picked').val());
       var B=($('#picked').val());
